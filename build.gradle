@@ -15,11 +15,11 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
-group = 'committee.nova'
+group = 'committee.nova.ramel.forge'
 version = '1.0.0'
 
 java {
-    archivesBaseName = 'ramel'
+    archivesBaseName = 'Ramel-Reforged-1.20.1'
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
