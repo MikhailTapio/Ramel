@@ -28,7 +28,7 @@ public abstract class MixinCamel extends LivingEntity {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void inject$tick(CallbackInfo ci) {
-        if (!isDashing()) return;
+        if (!isDashing() || level().isClientSide) return;
         final int i = hasEffect(MobEffects.MOVEMENT_SPEED) ? Objects.requireNonNull(getEffect(MobEffects.MOVEMENT_SPEED)).getAmplifier() + 1 : 0;
         final int j = hasEffect(MobEffects.MOVEMENT_SLOWDOWN) ? Objects.requireNonNull(getEffect(MobEffects.MOVEMENT_SLOWDOWN)).getAmplifier() + 1 : 0;
         final double impactBySpeed = Mth.clamp(getSpeed() * 1.65, .2, 3.0) + .25 * (i - j);
