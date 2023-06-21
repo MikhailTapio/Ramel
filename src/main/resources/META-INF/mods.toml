@@ -1,0 +1,13 @@
+modLoader = "javafml"
+loaderVersion = "[46,)"
+license = "GNU LGPL 3.0"
+[[mods]]
+modId = "ramel"
+version = "${file.jarVersion}"
+displayName = "Ramel"
+credits = "Thanks for orifu's idea and ix0rai's original implementation"
+authors = [
+    "ix0rai",
+    "Tapio"
+]
+description = "Bring your camels to ramming speed!"

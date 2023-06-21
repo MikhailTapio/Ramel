@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "committee.nova.ramel.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "ramel.refmap.json",
+  "mixins": [
+    "MixinCamel"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
