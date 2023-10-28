@@ -15,12 +15,17 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import javax.annotation.Nullable;
 import java.util.Objects;
 
 @Mixin(Camel.class)
 public abstract class MixinCamel extends LivingEntity {
     @Shadow
     public abstract boolean isDashing();
+
+    @Shadow
+    @Nullable
+    public abstract LivingEntity getControllingPassenger();
 
     protected MixinCamel(EntityType<? extends LivingEntity> t, Level w) {
         super(t, w);
@@ -37,7 +42,7 @@ public abstract class MixinCamel extends LivingEntity {
                 .forEach(e -> {
                     final LivingEntity l = (LivingEntity) e;
                     e.playSound(SoundEvents.PLAYER_ATTACK_KNOCKBACK);
-                    e.hurt(damageSources().noAggroMobAttack(this), Ramel.ramDamage.get().floatValue() * (isBaby() ? 1.0F : 2.0F));
+                    e.hurt(damageSources().mobAttack(getControllingPassenger() != null ? getControllingPassenger() : this), Ramel.ramDamage.get().floatValue() * (isBaby() ? 1.0F : 2.0F));
                     final double blockedImpact = l.isDamageSourceBlocked(damageSources().mobAttack(this)) ? .5 : 1.0;
                     l.knockback(blockedImpact * impactBySpeed * Ramel.ramKnockBackMultiplier.get() * (isBaby() ? 1.0 : 2.5),
                             Mth.sin(getYRot() * ((float) Math.PI / 180)), -Mth.cos(getYRot() * ((float) Math.PI / 180)));

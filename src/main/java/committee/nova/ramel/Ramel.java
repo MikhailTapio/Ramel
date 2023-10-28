@@ -10,6 +10,7 @@ import net.minecraftforge.network.NetworkConstants;
 @Mod("ramel")
 public class Ramel {
     private static final ForgeConfigSpec CFG;
+
     public static final ForgeConfigSpec.DoubleValue ramImpactRange;
     public static final ForgeConfigSpec.DoubleValue ramDamage;
     public static final ForgeConfigSpec.DoubleValue ramKnockBackMultiplier;
